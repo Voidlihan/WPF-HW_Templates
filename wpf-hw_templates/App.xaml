@@ -8,16 +8,7 @@
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="txtBoxVis">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        <Ellipse Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -57,46 +48,20 @@
                                     <RowDefinition Height="55*"/>
                                     <RowDefinition Height="55*"/>
                                 </Grid.RowDefinitions>
-                                <Rectangle x:Name="buttonRectangle" Grid.RowSpan="3" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
+                                <Ellipse x:Name="buttonEllipse" Grid.RowSpan="3" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"/>
                                 <TextBlock x:Name="buttonText" Grid.Row="1" Grid.Column="1" FontSize="22" Padding="1 1 1 1" Text="Bulk" Foreground="White"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Fill" TargetName="buttonRectangle" Value="{Binding Rectangle}"/>
+                                <Setter Property="Fill" TargetName="buttonEllipse" Value="{Binding Ellipse}"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
                             </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" SnapsToDevicePixels="true" Width="50" Height="50">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="55*"/>
-                                    <ColumnDefinition Width="55*"/>
-                                    <ColumnDefinition Width="55*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="55*"/>
-                                    <RowDefinition Height="55*"/>
-                                    <RowDefinition Height="55*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock x:Name="buttonText" Grid.Row="1" Grid.Column="1" FontSize="22" Padding="1 1 1 1" Text="E" Foreground="Black"/>
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Margin" TargetName="buttonEllipse" Value="{TemplateBinding Margin}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
